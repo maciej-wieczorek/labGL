@@ -190,11 +190,11 @@ void torusy3(float angle)
 	for (int j = 0; j < 6; j++)
 	{
 		glm::mat4 M1{ 1.f };
-		M1 = glm::scale(M1, glm::vec3{ 0.5, 0.5, 0.5 });
-		M1 = glm::rotate(M1, (float)glm::radians(j * 360.f / 6.f), glm::vec3{ 0,1,0 });
-		M1 = glm::translate(M1, srodek1);
-		M1 = glm::rotate(M1, (float)glm::radians(45.f), glm::vec3{ 0,1,0 });
+        M1 = glm::rotate(M1, (float)glm::radians(-30.f), glm::vec3{ 1,0,0 });
+		M1 = glm::rotate(M1, (float)glm::radians(j * (360.f / 6.f)), glm::vec3{ 0,1,0 });
+		M1 = glm::translate(M1, glm::vec3(0,0,0.95));
 		M1 = glm::rotate(M1, angle, osObrotu);
+        M1 = glm::scale(M1, glm::vec3{ 0.5, 0.5, 0.5 });
 		glUniformMatrix4fv(spLambert->u("M"), 1, false, glm::value_ptr(M1));
 		glUniform4f(spLambert->u("color"), 0, 1, 1, 1);
 		Models::torus.drawSolid();
